@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React, { useEffect, useState, useRef } from "react";
-import { motion, easeInOut, useInView } from "framer-motion"
+import { motion, easeInOut, useInView, AnimatePresence } from "framer-motion"
 import Lenis from "lenis";
 import AnimatedSection from "@/components/AnimatedSection";
 
@@ -10,6 +10,7 @@ import Navbar from "@/components/Navbar";
 import lagos from "@/assets/sårri.jpg"
 import lagos2 from "@/assets/lagos2.jpg"
 import wideimage from "@assets/wideimage.jpg"
+import Name from "@/components/Name";
 
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -19,7 +20,7 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); 
+    }, 5000); 
 
     return () => clearInterval(interval);
   }, []);
@@ -44,26 +45,30 @@ export default function Home() {
     <>
       <Navbar />
       
-      <motion.div
-            initial={{ y: 200, opacity: 0}}
-            animate={{ y: 0, opacity: 1}}
-            transition={{ delay: 0.4, duration: 1, ease: easeInOut }}
-        >
-          <div className="w-[100vw] h-[100vh] flex justify-center items-center mb-10">
-            <div className="w-[65vw] h-[65vw] flex justify-between items-center">
-                <div className="flex flex-col">
-                  <h1 className="text-white text-[50px]">Hei, mitt navn er ↴</h1>
-                  <h1 className="text-white text-[5vw]">Lucas Hagfoss</h1>
-                  <h1 className="text-white text-[25px]">Jeg er en UI / UX designer fra Norge</h1>
-                </div>
-                <Image src={images[currentImageIndex]} alt="" className="w-[30vw] h-[30vw] object-cover rounded-full" />
-            </div>
+      <div className="w-[100vw] h-[90vh] flex justify-center items-center mb-10">
+        <div className="w-[65vw]  flex justify-between items-center">
+          <div className="flex flex-col">
+            <motion.div initial={{ y: 200, opacity: 0}} animate={{ y: 0, opacity: 1}} transition={{ delay: 0.6, duration: 1, ease: easeInOut }}><h1 className="text-white text-[50px]">Hei, mitt navn er ↴</h1></motion.div>
+            <motion.div initial={{ y: 200, opacity: 0}} animate={{ y: 0, opacity: 1}} transition={{ delay: 0.8, duration: 1, ease: easeInOut }}><Name /></motion.div>
+            <motion.div initial={{ y: 200, opacity: 0}} animate={{ y: 0, opacity: 1}} transition={{ delay: 2.3, duration: 1, ease: easeInOut }}><h1 className="text-white text-[25px]">Jeg er en UI / UX designer fra Norge</h1></motion.div>
+          </div>
+          <div className="w-[30vw] h-[30vw] relative">
+            <motion.div initial={{ y: 200, opacity: 0}} animate={{ y: 0, opacity: 1}} transition={{ delay: 2, duration: 1, ease: easeInOut }}>
+              <Image
+                src={images[currentImageIndex]}
+                alt=""
+                className="w-full h-full object-cover rounded-full"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+        <motion.div initial={{ opacity: 0}} animate={{ opacity: 1}} transition={{ delay: 2, duration: 1, ease: easeInOut }}>
+          <div className="w-full flex justify-center items-center">
+            <div className="w-[65vw] h-[1px] bg-[#333]"></div>
           </div>
         </motion.div>
-
-        <div className="w-full flex justify-center items-center">
-          <div className="w-[65vw] h-[1px] bg-white"></div>
-        </div>
 
         <AnimatedSection>
             <div className="w-[100vw] h-[100vh] flex justify-center items-center">
@@ -75,10 +80,16 @@ export default function Home() {
             </div>
             </div>
           </AnimatedSection>
+
+          <AnimatedSection>
+            <div className="w-full flex justify-center items-center">
+              <div className="w-[65vw] h-[1px] bg-[#333]"></div>
+            </div>
+          </AnimatedSection>
         
         <AnimatedSection>
-            <div className="w-[100vw] h-[100vh] flex justify-center items-center">
-              <div className="w-[65vw] h-[65vw] flex flex-col gap-3 text-center">
+            <div className="w-[100vw] my-52 flex justify-center items-center">
+              <div className="w-[65vw] flex flex-col gap-3 text-center">
                 <h1 className="text-white p-20 text-[35px] bg-[#222] rounded-[1vw] border-2 border-[#333]">Jeg er en UI / UX designer fra Norge</h1>
                 <div className="flex gap-3">
                   <div className="w-full p-20 text-center text-white text-[25px] bg-[#222] border-2 border-[#333] rounded-[1vw]">
@@ -117,8 +128,8 @@ export default function Home() {
           </AnimatedSection>
 
           <AnimatedSection>
-            <div className="w-[100vw] h-[100vh] flex justify-center items-center">
-              <div className="w-[65vw] h-[65vw] flex flex-col gap-3 text-center">
+            <div className="w-[100vw] my-52 flex justify-center items-center">
+              <div className="w-[65vw] flex flex-col gap-3 text-center">
               <h1 className="text-white p-10 text-[35px] bg-[#222] rounded-[1vw] border-2 border-[#333]">Mine Interesser</h1>
               <div className="flex gap-3">
                 <div className="w-full p-10 text-white text-[25px] bg-[#222] border-2 border-[#333] rounded-[1vw] flex flex-col items-start">
@@ -148,8 +159,8 @@ export default function Home() {
           </AnimatedSection>
 
           <AnimatedSection>
-            <div className="w-[100vw] h-[100vh] flex justify-center items-center">
-              <div className="w-[65vw] h-[65vw] flex flex-col gap-3 text-center">
+            <div className="w-[100vw] my-52 flex justify-center items-center">
+              <div className="w-[65vw] flex flex-col gap-3 text-center">
                 <h1 className="text-white p-20 text-[35px] bg-[#222] rounded-[1vw] border-2 border-[#333]">Jeg er en UI / UX designer fra Norge</h1>
                 <div className="flex gap-3">
                   <div className="w-full p-20 text-center text-white text-[25px] bg-[#222] border-2 border-[#333] rounded-[1vw]">
