@@ -45,7 +45,7 @@ export default function Home() {
     <>
       <Navbar />
       
-      <div className="w-[100vw] h-[90vh] flex justify-center items-center mb-10">
+      <div className="w-[100vw] h-[85vh] flex justify-center items-center mb-10">
         <div className="w-[65vw]  flex justify-between items-center">
           <div className="flex flex-col">
             <motion.div initial={{ y: 200, opacity: 0}} animate={{ y: 0, opacity: 1}} transition={{ delay: 0.6, duration: 1, ease: easeInOut }}><h1 className="text-white text-[50px]">Hei, mitt navn er ↴</h1></motion.div>
@@ -53,25 +53,33 @@ export default function Home() {
             <motion.div initial={{ y: 200, opacity: 0}} animate={{ y: 0, opacity: 1}} transition={{ delay: 2.3, duration: 1, ease: easeInOut }}><h1 className="text-white text-[25px]">Jeg er en UI / UX designer fra Norge</h1></motion.div>
           </div>
           <div className="w-[30vw] h-[30vw] relative">
-            <motion.div initial={{ y: 200, opacity: 0}} animate={{ y: 0, opacity: 1}} transition={{ delay: 2, duration: 1, ease: easeInOut }}>
+            <motion.div initial={{ y: 200, opacity: 0, borderRadius: 0 }} animate={{ y: 0, opacity: 1, borderRadius: "50%" }} transition={{ delay: 2, duration: 1, ease: easeInOut }} className="overflow-hidden">
               <Image
                 src={images[currentImageIndex]}
                 alt=""
-                className="w-full h-full object-cover rounded-full"
+                className="w-full h-full object-cover"
               />
             </motion.div>
           </div>
         </div>
       </div>
 
-        <motion.div initial={{ opacity: 0}} animate={{ opacity: 1}} transition={{ delay: 2, duration: 1, ease: easeInOut }}>
-          <div className="w-full flex justify-center items-center">
-            <div className="w-[65vw] h-[1px] bg-[#333]"></div>
-          </div>
+      <motion.div
+            initial = {{ y: 200, opacity: 0}}
+            animate = {{ y: 0, opacity: 1}}
+            transition = {{ delay: 2, duration: 1, ease: easeInOut }}
+            className="w-full h-[100px] flex justify-center items-center"
+        >
+            <div className="w-[65vw] flex justify-between items-center border border-[#444444] rounded-[15px] px-5 p-2 backdrop-blur-lg">
+                <div className="flex gap-5">
+                    <button type="button" className="text-[#cecece] font-medium hover:text-white text-[13px] flex justify-center items-center gap-2 bg-[#232323] px-2 rounded-[8px] h-[35px]"><span className="pl-2">Log in</span> <span className="bg-[#444444] px-1.5 aspect-square rounded-[4px] flex justify-center items-center text-[10px]">L</span></button>
+                    <button type="button" className="text-[#090a0a] font-medium text-[13px] flex justify-center items-center gap-2 bg-white px-2 rounded-[8px] h-[35px]"><span className="px-2">Sign up</span></button>
+                </div>
+                </div>
         </motion.div>
 
         <AnimatedSection>
-            <div className="w-[100vw] h-[100vh] flex justify-center items-center">
+          <div className="w-[100vw] h-[100vh] flex justify-center items-center">
             <div className="w-[65vw] h-[30vw] flex justify-center items-center relative">
               <div className="absolute z-10 text-[100px] text-white mix-blend-difference">
                 2 ITA Tangen. VGS
