@@ -53,8 +53,8 @@ export default function Home() {
             <div className="w-[65vw] h-[65vw] flex justify-between items-center">
                 <div className="flex flex-col">
                   <h1 className="text-white text-[50px]">Hei, mitt navn er ↴</h1>
-                  <h1 className="text-white text-[100px]">Lucas Hagfoss</h1>
-                  <h1 className="text-white text-[30px]">Jeg er en UI / UX designer fra Norge</h1>
+                  <h1 className="text-white text-[5vw]">Lucas Hagfoss</h1>
+                  <h1 className="text-white text-[25px]">Jeg er en UI / UX designer fra Norge</h1>
                 </div>
                 <Image src={images[currentImageIndex]} alt="" className="w-[30vw] h-[30vw] object-cover rounded-full" />
             </div>
