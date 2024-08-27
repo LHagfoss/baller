@@ -7,26 +7,22 @@ import Lenis from "lenis";
 import AnimatedSection from "@/components/AnimatedSection";
 
 import Navbar from "@/components/Navbar";
-import bugreport from "@/assets/bugreport.jpg"
-import adrian from "@/assets/adrien.jpg"
-import asks from "@/assets/balls.png"
-import johnpork from "@/assets/johnpork.png"
+import lagos from "@/assets/sårri.jpg"
+import lagos2 from "@/assets/lagos2.jpg"
+import wideimage from "@assets/wideimage.jpg"
 
 export default function Home() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [lagos, lagos2];
   const lenisRef = useRef<Lenis | null>(null);
-  const ref = useRef(null);
-  const isInView1 = useInView(ref);
-  const isInView2 = useInView(ref);
-  const [hasBeenSeen1, setHasBeenSeen1] = useState(false);
-  const [hasBeenSeen2, setHasBeenSeen2] = useState(false);
 
-  if (isInView1 && !hasBeenSeen1) {
-    setHasBeenSeen1(true);
-  }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000); 
 
-  if (isInView2 && !hasBeenSeen2) {
-    setHasBeenSeen2(true);
-  }
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
       window.scrollTo(0, 0);
@@ -44,105 +40,152 @@ export default function Home() {
       }
   }, [])
 
-  const animationVariants1 = {
-    visible: { opacity: 1, scale: 1 },
-    hidden: { opacity: 0, scale: 0.8 },
-  };
-
-  const animationVariants2 = {
-    visible: { opacity: 1, scale: 1 },
-    hidden: { opacity: 0, scale: 0.8 },
-  };
-
   return (
     <>
       <Navbar />
+      
       <motion.div
             initial={{ y: 200, opacity: 0}}
             animate={{ y: 0, opacity: 1}}
             transition={{ delay: 0.4, duration: 1, ease: easeInOut }}
         >
-          <div className="mt-[100px] w-full h-[100vw] flex flex-col items-center">
-            <div className="flex flex-col my-10">
-              <h1 className="text-white text-[50px]">Hi, my name is ↴</h1>
-              <h1 className="text-white text-[100px]">Lucas Hagfoss</h1>
+          <div className="w-[100vw] h-[100vh] flex justify-center items-center mb-10">
+            <div className="w-[65vw] h-[65vw] flex justify-between items-center">
+                <div className="flex flex-col">
+                  <h1 className="text-white text-[50px]">Hei, mitt navn er ↴</h1>
+                  <h1 className="text-white text-[100px]">Lucas Hagfoss</h1>
+                  <h1 className="text-white text-[30px]">Jeg er en UI / UX designer fra Norge</h1>
+                </div>
+                <Image src={images[currentImageIndex]} alt="" className="w-[30vw] h-[30vw] object-cover rounded-full" />
             </div>
-            <h1 className="text-white text-[100px]">Balasdls Blalasdls</h1>
-            <div className="flex w-[70%] justify-around h-[20%]">
-              <div className="w-[15%] h-[100%] bg-white"></div>
-              <div className="w-[15%] h-[100%] bg-white"></div>
-              <div className="w-[15%] h-[100%] bg-white"></div>
-            </div>
-            <div className="flex w-[50%] justify-around h-[20%] mx-10">
-              <div className="w-[25%] h-[100%] bg-white"></div>
-              <div className="w-[25%] h-[100%] bg-white"></div>
-            </div>
-            <h1 className="text-white text-[100px]">Balls Blasdalls</h1>
           </div>
         </motion.div>
-        
+
+        <div className="w-full flex justify-center items-center">
+          <div className="w-[65vw] h-[1px] bg-white"></div>
+        </div>
+
+        <AnimatedSection>
+            <div className="w-[100vw] h-[100vh] flex justify-center items-center">
+            <div className="w-[65vw] h-[30vw] flex justify-center items-center relative">
+              <div className="absolute z-10 text-[100px] text-white mix-blend-difference">
+                2 ITA Tangen. VGS
+              </div>
+              <Image src={wideimage} alt="" className="object-cover w-full rounded-[1vw]" />
+            </div>
+            </div>
+          </AnimatedSection>
         
         <AnimatedSection>
-            <div className="w-full flex justify-center items-center">
-              <div className="w-[65vw] h-[65vw] grid grid-rows-5 grid-cols-10 gap-5">
-                <div className="col-span-6 row-span-2 bg-gradient-to-t from-[#3f4b67] to-[#2b3246] rounded-[2vw] p-5 flex">
-                  <div className="flex-1 px-5 py-20 flex flex-col">
-                    <div className="h-[100%] flex flex-col justify-center">
-                      <div className="text-white">John Pork</div>
-                      <div className="text-[#99bcfe] text-[20px] font-medium">John Pork is a 20-something year old guy who loves to eat pork.</div>
-                    </div>
+            <div className="w-[100vw] h-[100vh] flex justify-center items-center">
+              <div className="w-[65vw] h-[65vw] flex flex-col gap-3 text-center">
+                <h1 className="text-white p-20 text-[35px] bg-[#222] rounded-[1vw] border-2 border-[#333]">Jeg er en UI / UX designer fra Norge</h1>
+                <div className="flex gap-3">
+                  <div className="w-full p-20 text-center text-white text-[25px] bg-[#222] border-2 border-[#333] rounded-[1vw]">
+                    Om meg som UI/UX-designer
+                    Som UI/UX-designer er jeg lidenskapelig opptatt av å skape intuitive og engasjerende 
+                    digitale opplevelser. Med min kreative tilnærming og tekniske kompetanse, streber jeg 
+                    etter å lage brukergrensesnitt som ikke bare ser estetisk tiltalende ut, men også 
+                    fungerer sømløst. Jeg legger stor vekt på brukervennlighet og tilgjengelighet i alle 
+                    mine prosjekter, og jobber kontinuerlig med å holde meg oppdatert på de nyeste 
+                    trendene og teknologiene innen feltet. Min målsetting er å designe løsninger som 
+                    forenkler og beriker menneskers digitale hverdag.
                   </div>
-                  <div className="flex-[1.5] flex justify-center items-center"><Image src={johnpork} alt="" className="shadow-2xl rounded-[1vw] w-full h-full"></Image></div>
+                  <div className="w-full p-20 text-center text-white text-[25px] bg-[#222] border-2 border-[#333] rounded-[1vw]">
+                    Om meg som UI/UX-designer
+                    Som UI/UX-designer er jeg lidenskapelig opptatt av å skape intuitive og engasjerende 
+                    digitale opplevelser. Med min kreative tilnærming og tekniske kompetanse, streber jeg 
+                    etter å lage brukergrensesnitt som ikke bare ser estetisk tiltalende ut, men også 
+                    fungerer sømløst. Jeg legger stor vekt på brukervennlighet og tilgjengelighet i alle 
+                    mine prosjekter, og jobber kontinuerlig med å holde meg oppdatert på de nyeste 
+                    trendene og teknologiene innen feltet. Min målsetting er å designe løsninger som 
+                    forenkler og beriker menneskers digitale hverdag.
+                  </div>
                 </div>
-                <div className="col-span-4 row-span-2 bg-gradient-to-t from-[#17181a] to-[#1d1e22] rounded-[2vw]"></div>
-                <div className="col-span-5 row-span-2 bg-gradient-to-t from-[#17181a] to-[#1d1e22] rounded-[2vw] flex justify-around flex-col p-10">
-                  <div className="flex-[1.5] flex justify-center items-center"><Image src={adrian} alt="" className="shadow-2xl rounded-[1vw] w-full border border-[#444444] object-cover"></Image></div>
-                  <div className="flex-1">
-                    <div className="text-[#99bcfe]">Automation Triggers</div>
-                    <div className="text-white text-[20px] font-medium">Turn any message into an Ask simply by using an emoji.</div>
-                  </div>
-                </div>
-                <div className="col-span-5 row-span-2 bg-gradient-to-t from-[#17181a] to-[#1d1e22] rounded-[2vw] flex justify-around flex-col p-10">
-                  <div className="flex-[1.5] flex justify-center items-center"><Image src={asks} alt="" className="drop-shadow-2xl rounded-[1vw] w-full object-cover"></Image></div>
-                  <div className="flex-1">
-                    <div className="text-[#99bcfe]">Instant Updates</div>
-                    <div className="text-white text-[20px] font-medium">Get notified about comments and status updates directly in Slack.</div>
-                  </div>
+                <div className="w-full p-20 text-center text-white text-[25px] bg-[#222] border-2 border-[#333] rounded-[1vw]">
+                  Om meg som UI/UX-designer
+                  Som UI/UX-designer er jeg lidenskapelig opptatt av å skape intuitive og engasjerende 
+                  digitale opplevelser. Med min kreative tilnærming og tekniske kompetanse, streber jeg 
+                  etter å lage brukergrensesnitt som ikke bare ser estetisk tiltalende ut, men også 
+                  fungerer sømløst. Jeg legger stor vekt på brukervennlighet og tilgjengelighet i alle 
+                  mine prosjekter, og jobber kontinuerlig med å holde meg oppdatert på de nyeste 
+                  trendene og teknologiene innen feltet. Min målsetting er å designe løsninger som 
+                  forenkler og beriker menneskers digitale hverdag.
                 </div>
               </div>
             </div>
           </AnimatedSection>
 
           <AnimatedSection>
-            <div className="w-full flex justify-center items-center">
-              <div className="w-[65vw] h-[65vw] grid grid-rows-5 grid-cols-10 gap-5">
-                <div className="col-span-6 row-span-2 bg-gradient-to-t from-[#3f4b67] to-[#2b3246] rounded-[2vw] p-5 flex">
-                  <div className="flex-1 px-5 py-20 flex flex-col">
-                    <div className="h-[100%] flex flex-col justify-center">
-                      <div className="text-white">John Pork</div>
-                      <div className="text-[#99bcfe] text-[20px] font-medium">John Pork is a 20-something year old guy who loves to eat pork.</div>
-                    </div>
-                  </div>
-                  <div className="flex-[1.5] flex justify-center items-center"><Image src={johnpork} alt="" className="shadow-2xl rounded-[1vw] w-full h-full"></Image></div>
+            <div className="w-[100vw] h-[100vh] flex justify-center items-center">
+              <div className="w-[65vw] h-[65vw] flex flex-col gap-3 text-center">
+              <h1 className="text-white p-10 text-[35px] bg-[#222] rounded-[1vw] border-2 border-[#333]">Mine Interesser</h1>
+              <div className="flex gap-3">
+                <div className="w-full p-10 text-white text-[25px] bg-[#222] border-2 border-[#333] rounded-[1vw] flex flex-col items-start">
+                  <div className="text-white text-[30px]">Ting jeg liker</div>
+                  <ul className="flex flex-col items-start list-disc p-10">
+                    <li className="">Gaming</li>
+                    <li>Piano</li>
+                    <li>Glad i UI / UX</li>
+                    <li>Elsker å kode / designe frontend</li>
+                    <li>Elsker å lære nye ting ( spesielt nye verktøy )</li>
+                    <li>E-Sport innen <span className="underline">VALORANT</span></li>
+                  </ul>
                 </div>
-                <div className="col-span-4 row-span-2 bg-gradient-to-t from-[#17181a] to-[#1d1e22] rounded-[2vw]"></div>
-                <div className="col-span-5 row-span-2 bg-gradient-to-t from-[#17181a] to-[#1d1e22] rounded-[2vw] flex justify-around flex-col p-10">
-                  <div className="flex-[1.5] flex justify-center items-center"><Image src={adrian} alt="" className="shadow-2xl rounded-[1vw] w-full border border-[#444444] object-cover"></Image></div>
-                  <div className="flex-1">
-                    <div className="text-[#99bcfe]">Automation Triggers</div>
-                    <div className="text-white text-[20px] font-medium">Turn any message into an Ask simply by using an emoji.</div>
+                <div className="w-full p-10 text-white text-[25px] bg-[#222] border-2 border-[#333] rounded-[1vw] flex flex-col items-start">
+                  <div className="text-white text-[30px]">Ting jeg kan innnen UI / UX</div>
+                  <ul className="flex flex-col items-start list-disc p-10">
+                    <li>React.js</li>
+                    <li>Next.js ( Foretrekker dette )</li>
+                    <li>TypeScript, TailwindCSS</li>
+                    <li>Vanilla HTML, CSS, JavaScript</li>
+                    <li>Litt Three.js</li>
+                  </ul>
+                </div>
+              </div>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection>
+            <div className="w-[100vw] h-[100vh] flex justify-center items-center">
+              <div className="w-[65vw] h-[65vw] flex flex-col gap-3 text-center">
+                <h1 className="text-white p-20 text-[35px] bg-[#222] rounded-[1vw] border-2 border-[#333]">Jeg er en UI / UX designer fra Norge</h1>
+                <div className="flex gap-3">
+                  <div className="w-full p-20 text-center text-white text-[25px] bg-[#222] border-2 border-[#333] rounded-[1vw]">
+                    Som UI/UX-designer er jeg lidenskapelig opptatt av å skape 
+                    intuitive og engasjerende digitale opplevelser. Med min kreative tilnærming 
+                    og tekniske kompetanse, streber jeg etter å lage brukergrensesnitt som ikke 
+                    bare ser estetisk tiltalende ut, men også fungerer sømløst. Jeg legger stor 
+                    vekt på brukervennlighet og tilgjengelighet i alle mine prosjekter, og jobber 
+                    kontinuerlig med å holde meg oppdatert på de nyeste trendene og teknologiene 
+                    innen feltet. Min målsetting er å designe løsninger som forenkler og beriker 
+                    menneskers digitale hverdag.
+                  </div>
+                  <div className="w-full p-20 text-center text-white text-[25px] bg-[#222] border-2 border-[#333] rounded-[1vw]">
+                    Som UI/UX-designer er jeg lidenskapelig opptatt av å skape 
+                    intuitive og engasjerende digitale opplevelser. Med min kreative tilnærming 
+                    og tekniske kompetanse, streber jeg etter å lage brukergrensesnitt som ikke 
+                    bare ser estetisk tiltalende ut, men også fungerer sømløst. Jeg legger stor 
+                    vekt på brukervennlighet og tilgjengelighet i alle mine prosjekter, og jobber 
+                    kontinuerlig med å holde meg oppdatert på de nyeste trendene og teknologiene 
+                    innen feltet. Min målsetting er å designe løsninger som forenkler og beriker 
+                    menneskers digitale hverdag.
                   </div>
                 </div>
-                <div className="col-span-5 row-span-2 bg-gradient-to-t from-[#17181a] to-[#1d1e22] rounded-[2vw] flex justify-around flex-col p-10">
-                  <div className="flex-[1.5] flex justify-center items-center"><Image src={asks} alt="" className="drop-shadow-2xl rounded-[1vw] w-full object-cover"></Image></div>
-                  <div className="flex-1">
-                    <div className="text-[#99bcfe]">Instant Updates</div>
-                    <div className="text-white text-[20px] font-medium">Get notified about comments and status updates directly in Slack.</div>
-                  </div>
+                <div className="w-full p-20 text-center text-white text-[25px] bg-[#222] border-2 border-[#333] rounded-[1vw]">
+                  Som UI/UX-designer er jeg lidenskapelig opptatt av å skape 
+                  intuitive og engasjerende digitale opplevelser. Med min kreative tilnærming 
+                  og tekniske kompetanse, streber jeg etter å lage brukergrensesnitt som ikke 
+                  bare ser estetisk tiltalende ut, men også fungerer sømløst. Jeg legger stor 
+                  vekt på brukervennlighet og tilgjengelighet i alle mine prosjekter, og jobber 
+                  kontinuerlig med å holde meg oppdatert på de nyeste trendene og teknologiene 
+                  innen feltet. Min målsetting er å designe løsninger som forenkler og beriker 
+                  menneskers digitale hverdag.
                 </div>
               </div>
             </div>
-        </AnimatedSection>
+          </AnimatedSection>
     </>
   )
 }
