@@ -70,12 +70,7 @@ export default function Home() {
             transition = {{ delay: 2, duration: 1, ease: easeInOut }}
             className="w-full h-[100px] flex justify-center items-center"
         >
-            <div className="w-[65vw] flex justify-between items-center border border-[#444444] rounded-[15px] px-5 p-2 backdrop-blur-lg">
-                <div className="flex gap-5">
-                    <button type="button" className="text-[#cecece] font-medium hover:text-white text-[13px] flex justify-center items-center gap-2 bg-[#232323] px-2 rounded-[8px] h-[35px]"><span className="pl-2">Log in</span> <span className="bg-[#444444] px-1.5 aspect-square rounded-[4px] flex justify-center items-center text-[10px]">L</span></button>
-                    <button type="button" className="text-[#090a0a] font-medium text-[13px] flex justify-center items-center gap-2 bg-white px-2 rounded-[8px] h-[35px]"><span className="px-2">Sign up</span></button>
-                </div>
-                </div>
+            <div className="w-[65vw] flex justify-between items-center border border-[#444444] rounded-[15px] px-5 p-2 backdrop-blur-lg"></div>
         </motion.div>
 
         <AnimatedSection>
@@ -86,15 +81,13 @@ export default function Home() {
               </div>
               <Image src={wideimage} alt="" className="object-cover w-full rounded-[1vw]" />
             </div>
-            </div>
-          </AnimatedSection>
+          </div>
+        </AnimatedSection>
 
-          <AnimatedSection>
-            <div className="w-full flex justify-center items-center">
-              <div className="w-[65vw] h-[1px] bg-[#333]"></div>
-            </div>
-          </AnimatedSection>
-        
+        <AnimatedSection>
+            <div className="w-full h-[100px] flex justify-center items-center"><div className="w-[65vw] flex justify-between items-center border border-[#444444] rounded-[15px] px-5 p-2 backdrop-blur-lg"></div></div>
+        </AnimatedSection>
+
         <AnimatedSection>
             <div className="w-[100vw] my-52 flex justify-center items-center">
               <div className="w-[65vw] flex flex-col gap-3 text-center">
