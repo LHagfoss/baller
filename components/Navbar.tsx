@@ -18,7 +18,7 @@ export default function Navbar() {
         >
             <div className="w-[70vw] flex justify-between items-center bg-[#0000004d] border border-[#444444] rounded-[15px] px-5 p-2 backdrop-blur-lg">
                 <Link href="/" className="text-[#cecece] hover:text-white font-medium text-[13px] p-2 flex justify-center items-start"><Image src={linearLogo} alt="" className="w-[18px] mr-2"></Image>LHagfoss</Link>
-                <Link href="/" className="text-[#cecece] hover:text-white font-medium text-[13px] p-2 flex justify-center items-start">Projects / Work <span className="p-1 text-[7px]"> ( 8 ) </span></Link>
+                <Link href="/work" className="text-[#cecece] hover:text-white font-medium text-[13px] p-2 flex justify-center items-start">Projects / Work <span className="p-1 text-[7px]"> ( 8 ) </span></Link>
                 <Link href="/" className="text-[#cecece] hover:text-white font-medium text-[13px] p-2 flex justify-center items-start">Contact / Message</Link>
                 <Link href="/" className="text-[#cecece] hover:text-white font-medium text-[13px] p-2 flex justify-center items-start">About / Info</Link>
                 <Link href="/" className="text-[#cecece] hover:text-white font-medium text-[13px] p-2 flex justify-center items-start">Contact / Message</Link>

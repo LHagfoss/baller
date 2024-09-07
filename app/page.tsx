@@ -4,13 +4,13 @@ import Image from "next/image";
 import React, { useEffect, useState, useRef } from "react";
 import { motion, easeInOut, useInView, AnimatePresence } from "framer-motion"
 import Lenis from "lenis";
-import AnimatedSection from "@/components/AnimatedSection";
+import AnimatedSection from "@/components/animatedsection";
 
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/navbar";
 import lagos from "@/assets/sårri.jpg"
 import lagos2 from "@/assets/lagos2.jpg"
 import wideimage from "@assets/wideimage.jpg"
-import Name from "@/components/Name";
+import Name from "@/components/name";
 
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
